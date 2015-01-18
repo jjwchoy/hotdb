@@ -1,0 +1,62 @@
+name: 		hotdb
+version:  	0.1
+license: 	MIT
+license-file:   LICENSE
+category:       Database
+copyright: 	(c) 2014-2015 Jason Choy
+author: 	Jason Choy <jjwchoy@gmail.com>
+maintainer: 	Jason Choy <jjwchoy@gmail.com>
+stability: 	experimental
+tested-with:    GHC == 7.6, GHC == 7.8
+cabal-version:  >= 1.8
+homepage:       https://github.com/jjwchoy/hotdb
+bug-reports:    https://github.com/jjwchoy/hotdb/issues
+build-type:     Simple
+
+library
+  hs-source-dirs:
+    src
+  exposed-modules:
+    HotDB.Core.Commit
+    HotDB.Core.Node
+    HotDB.Core.Operation
+    HotDB.Core.Path
+    HotDB.Core.Snapshot
+    HotDB.Core.Transformation
+  other-modules:
+    HotDB.Core.JsonUtils
+
+  build-depends:
+      aeson    		== 0.8.*
+    , base 		== 4.*
+    , base16-bytestring >= 0.1.1.6 && < 0.2
+    , bytestring 	>= 0.10.4.0
+    , containers
+    , cryptohash        >= 0.11.6 && < 0.12
+    , scientific 	>= 0.3.1 && < 0.4
+    , text        	>= 1.1.1.0
+    , unordered-containers
+    , vector  		>= 0.7.1
+test-suite hot-testsuite
+  default-language:
+    Haskell2010
+  type:
+    exitcode-stdio-1.0
+  hs-source-dirs:
+    tests
+  main-is:
+    test.hs
+  build-depends:
+      base == 4.*
+    , tasty >= 0.10
+    , tasty-hunit >= 0.9
+    , tasty-smallcheck >= 0.8
+    , smallcheck >= 1.1
+    , hotdb
+    , aeson    		== 0.8.*
+    , bytestring 	>= 0.10.4.0
+    , containers
+    , scientific 	>= 0.3.1 && < 0.4
+    , text        	>= 1.1.1.0
+    , unordered-containers
+    , vector  		>= 0.7.1
